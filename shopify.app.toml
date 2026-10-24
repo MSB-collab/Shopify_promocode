@@ -1,48 +1,33 @@
-# This file tells Shopify what your app is called, what permissions
-# it needs, and what events it wants to be notified about.
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-client_id = "f35cdba51cf047b59799f1f2d8551c19"
-name = "The Deft Crew"
-handle = "the-deft-crew"
+client_id = "74cc64d8161a03541628d8b4d6643964"
+name = "deftcrew"
 application_url = "https://shopifytdc-production.up.railway.app"
 embedded = true
+handle = "deftcrew"
 
 [build]
 automatically_update_urls_on_dev = true
 
-[access_scopes]
-scopes = "write_discounts,read_orders,read_customers,read_products,read_price_rules"
-
-[auth]
-redirect_urls = [
- 
-  "https://shopifytdc-production.up.railway.app/auth/shopify/callback",
-  "https://shopifytdc-production.up.railway.app/api/auth/callback"
-]
-
 [webhooks]
 api_version = "2026-07"
 
-[[webhooks.subscriptions]]
-topics = ["app/uninstalled"]
-uri = "/webhooks/app/uninstalled"
+  [[webhooks.subscriptions]]
+  topics = [ "app/scopes_update" ]
+  uri = "/webhooks/app/scopes_update"
 
-[[webhooks.subscriptions]]
-topics = ["app/scopes_update"]
-uri = "/webhooks/app/scopes_update"
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks/app/uninstalled"
 
-# Held back for now:
-# shop/redact — CLI is rejecting this topic as "invalid", likely a version
-# mismatch from running Shopify CLI v3. Revisit once Node is upgraded and
-# the newer CLI can be used again, or add it manually in the Partner
-# Dashboard's webhook settings instead of through this file.
-#
-# [[webhooks.subscriptions]]
-# topics = ["shop/redact"]
-# uri = "/webhooks/app/shop_redact"
-#
-# customers/data_request, customers/redact, orders/create, orders/updated
-# still need Protected Customer Data approval before adding back too.
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_customers,read_price_rules,read_discounts,write_discounts,read_orders,read_products"
+optional_scopes = [ ]
+use_legacy_install_flow = false
+
+[auth]
+redirect_urls = [ "https://shopifytdc-production.up.railway.app/auth/callback" ]
 
 [pos]
 embedded = false
