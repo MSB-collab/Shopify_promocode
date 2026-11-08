@@ -1,10 +1,10 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-client_id = "74cc64d8161a03541628d8b4d6643964"
-name = "deftcrew"
+client_id = "b33ceff9346edb323fd01bd6426d644e"
+name = "tdc"
 application_url = "https://shopifytdc-production.up.railway.app"
 embedded = true
-handle = "deftcrew"
+handle = "the-deft-crew-student-deals"
 
 [build]
 automatically_update_urls_on_dev = true
